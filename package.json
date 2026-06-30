@@ -1,0 +1,61 @@
+{
+  "name": "wuhan-adult-education-course-assistant",
+  "private": true,
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"electron .\"",
+    "start": "electron .",
+    "build": "vite build",
+    "preview": "vite preview",
+    "pack": "electron-builder --win --x64"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.7",
+    "vue": "^3.5.38"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.7",
+    "autoprefixer": "^10.5.2",
+    "concurrently": "^10.0.3",
+    "electron": "^42.5.1",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^3.4.19",
+    "vite": "^6.2.0"
+  },
+  "build": {
+    "appId": "com.huashenxt.assistant",
+    "productName": "华莘学堂课程助手",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "xwtx-life",
+        "repo": "huashenxt"
+      }
+    ],
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "api.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "requestedExecutionLevel": "highestAvailable"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "华莘学堂课程助手"
+    }
+  }
+}
