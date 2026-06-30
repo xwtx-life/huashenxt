@@ -26,7 +26,7 @@
   },
   "build": {
     "appId": "com.huashenxt.assistant",
-    "productName": "课程助手",
+    "productName": "course-assistant",
     "publish": [
       {
         "provider": "github",
@@ -48,7 +48,6 @@
       "target": [
         "nsis"
       ],
-      "artifactName": "课程助手.${ext}",
       "requestedExecutionLevel": "highestAvailable"
     },
     "nsis": {
