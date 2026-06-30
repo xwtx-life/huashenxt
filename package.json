@@ -1,14 +1,14 @@
 {
   "name": "course-assistant",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "main.js",
   "scripts": {
     "dev": "concurrently -k \"vite\" \"electron .\"",
     "start": "electron .",
     "build": "vite build",
     "preview": "vite preview",
-    "pack": "electron-builder --win --x64"
+    "pack": "npm run build && electron-builder --win --x64"
   },
   "dependencies": {
     "electron-updater": "^6.1.7",
@@ -48,14 +48,16 @@
       "target": [
         "nsis"
       ],
-      "requestedExecutionLevel": "asInvoker"
+      "requestedExecutionLevel": "asInvoker",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "武汉工程大学（成教）课程助手"
+      "shortcutName": "武汉工程大学（成教）课程助手",
+      "include": "build/installer.nsh"
     }
   }
 }

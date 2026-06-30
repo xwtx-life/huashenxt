@@ -189,9 +189,13 @@ onMounted(() => {
   const currentVersion = packageJson.version;
   if (lastSeenVersion !== currentVersion) {
     showAnnouncement.value = true;
-    localStorage.setItem('lastSeenVersion', currentVersion);
   }
 });
+
+const closeAnnouncement = () => {
+  showAnnouncement.value = false;
+  localStorage.setItem('lastSeenVersion', packageJson.version);
+};
 </script>
 
 <template>
@@ -264,7 +268,7 @@ onMounted(() => {
           <span class="text-xs font-semibold text-macTextPrimary flex items-center gap-1.5">
             📢 官方公告
           </span>
-          <button @click="showAnnouncement = false" class="text-macTextSecondary hover:text-macTextPrimary bg-transparent border-none cursor-pointer text-sm font-bold">
+          <button @click="closeAnnouncement" class="text-macTextSecondary hover:text-macTextPrimary bg-transparent border-none cursor-pointer text-sm font-bold">
             ✕
           </button>
         </div>
@@ -293,7 +297,7 @@ onMounted(() => {
         
         <!-- 弹窗底部 -->
         <div class="px-5 py-3.5 border-t border-macBorder bg-macSidebar flex justify-end">
-          <button @click="showAnnouncement = false" class="px-4 py-1.5 text-xs bg-macBlue text-white hover:bg-macBlue/90 border-none rounded-lg font-medium cursor-pointer shadow-sm transition-colors">
+          <button @click="closeAnnouncement" class="px-4 py-1.5 text-xs bg-macBlue text-white hover:bg-macBlue/90 border-none rounded-lg font-medium cursor-pointer shadow-sm transition-colors">
             我知道了
           </button>
         </div>
