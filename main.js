@@ -240,7 +240,7 @@ function createWindow() {
     minWidth: 950,
     minHeight: 650,
     frame: false, // 设为无边框窗口
-    title: "课程助手",
+    title: "武汉工程大学（成教）课程助手",
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,

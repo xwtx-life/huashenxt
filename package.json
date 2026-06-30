@@ -48,6 +48,7 @@
       "target": [
         "nsis"
       ],
+      "artifactName": "课程助手.${ext}",
       "requestedExecutionLevel": "highestAvailable"
     },
     "nsis": {
