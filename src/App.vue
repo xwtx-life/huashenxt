@@ -7,7 +7,7 @@ import UserInfo from './components/UserInfo.vue';
 import CourseList from './components/CourseList.vue';
 import HomeworkPanel from './components/HomeworkPanel.vue';
 import ConsoleLog from './components/ConsoleLog.vue';
-import groupImg from './assets/group.jpg';
+import groupImg from './assets/group.png';
 import packageJson from '../package.json';
 
 const showAnnouncement = ref(false);
@@ -258,7 +258,7 @@ onMounted(() => {
 
     <!-- 公告弹窗 -->
     <div v-if="showAnnouncement" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div class="bg-macBg border border-macBorder rounded-2xl w-full max-w-[360px] overflow-hidden shadow-2xl flex flex-col animate-in zoom-in-95 duration-200">
+      <div class="bg-macBg border border-macBorder rounded-2xl w-full max-w-[450px] overflow-hidden shadow-2xl flex flex-col animate-in zoom-in-95 duration-200">
         <!-- 弹窗头部 -->
         <div class="px-5 py-4 border-b border-macBorder flex justify-between items-center bg-macSidebar">
           <span class="text-xs font-semibold text-macTextPrimary flex items-center gap-1.5">
@@ -284,7 +284,7 @@ onMounted(() => {
           </p>
           
           <!-- 二维码图片 -->
-          <div class="border border-macBorder rounded-xl p-1.5 bg-white shadow-sm max-w-[200px]">
+          <div class="border border-macBorder rounded-xl p-1.5 bg-white shadow-sm max-w-[260px]">
             <img :src="groupImg" alt="交流群二维码" class="w-full h-auto rounded-lg select-none pointer-events-none" />
           </div>
 
