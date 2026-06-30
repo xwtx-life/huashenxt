@@ -8,6 +8,7 @@ import CourseList from './components/CourseList.vue';
 import HomeworkPanel from './components/HomeworkPanel.vue';
 import ConsoleLog from './components/ConsoleLog.vue';
 import groupImg from './assets/group.jpg';
+import packageJson from '../package.json';
 
 const showAnnouncement = ref(false);
 
@@ -183,11 +184,12 @@ onMounted(() => {
     });
   }
 
-  // 4. 首次启动自动弹出公告
-  const hasSeen = localStorage.getItem('hasSeenAnnouncement');
-  if (!hasSeen) {
+  // 4. 首次启动或版本更新后第一次启动自动弹出公告
+  const lastSeenVersion = localStorage.getItem('lastSeenVersion');
+  const currentVersion = packageJson.version;
+  if (lastSeenVersion !== currentVersion) {
     showAnnouncement.value = true;
-    localStorage.setItem('hasSeenAnnouncement', 'true');
+    localStorage.setItem('lastSeenVersion', currentVersion);
   }
 });
 </script>
