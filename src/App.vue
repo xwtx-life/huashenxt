@@ -197,7 +197,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col h-screen w-screen bg-macBg text-macTextPrimary overflow-hidden font-sans select-none antialiased">
     <!-- 顶部标题栏 -->
-    <TitleBar @toggleTheme="toggleTheme" @openAnnouncement="showAnnouncement = true" />
+    <TitleBar :version="packageJson.version" @toggleTheme="toggleTheme" @openAnnouncement="showAnnouncement = true" />
 
     <div class="flex flex-1 overflow-hidden">
       <!-- 左边栏：控制与状态 -->

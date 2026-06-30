@@ -1,4 +1,11 @@
 <script setup>
+defineProps({
+  version: {
+    type: String,
+    default: '1.0.0'
+  }
+});
+
 defineEmits(['toggleTheme', 'openAnnouncement']);
 
 const minimize = () => window.electronAPI.minimizeWindow();
@@ -11,6 +18,7 @@ const close = () => window.electronAPI.closeWindow();
     <!-- 左侧标题 -->
     <div class="flex items-center gap-2 pl-3 pointer-events-none">
       <span class="text-[11px] text-macTextPrimary font-medium">武汉工程大学（成教）课程助手</span>
+      <span class="text-[9px] bg-macInputBg border border-macBorder text-macTextSecondary px-1.5 py-0.5 rounded font-mono font-semibold">v{{ version }}</span>
     </div>
     
     <!-- 右侧控制区 (不拖拽) -->
