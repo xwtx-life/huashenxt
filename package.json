@@ -48,7 +48,7 @@
       "target": [
         "nsis"
       ],
-      "requestedExecutionLevel": "highestAvailable"
+      "requestedExecutionLevel": "asInvoker"
     },
     "nsis": {
       "oneClick": false,
