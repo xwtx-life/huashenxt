@@ -1,5 +1,5 @@
 {
-  "name": "wuhan-adult-education-course-assistant",
+  "name": "course-assistant",
   "private": true,
   "version": "1.0.0",
   "main": "main.js",
@@ -26,7 +26,7 @@
   },
   "build": {
     "appId": "com.huashenxt.assistant",
-    "productName": "华莘学堂课程助手",
+    "productName": "课程助手",
     "publish": [
       {
         "provider": "github",
@@ -55,7 +55,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "华莘学堂课程助手"
+      "shortcutName": "课程助手"
     }
   }
 }
