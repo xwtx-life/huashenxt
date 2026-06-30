@@ -7,6 +7,9 @@ import UserInfo from './components/UserInfo.vue';
 import CourseList from './components/CourseList.vue';
 import HomeworkPanel from './components/HomeworkPanel.vue';
 import ConsoleLog from './components/ConsoleLog.vue';
+import groupImg from './assets/group.jpg';
+
+const showAnnouncement = ref(false);
 
 // 状态定义
 const isRunning = ref(false);
@@ -179,13 +182,20 @@ onMounted(() => {
       }
     });
   }
+
+  // 4. 首次启动自动弹出公告
+  const hasSeen = localStorage.getItem('hasSeenAnnouncement');
+  if (!hasSeen) {
+    showAnnouncement.value = true;
+    localStorage.setItem('hasSeenAnnouncement', 'true');
+  }
 });
 </script>
 
 <template>
   <div class="flex flex-col h-screen w-screen bg-macBg text-macTextPrimary overflow-hidden font-sans select-none antialiased">
     <!-- 顶部标题栏 -->
-    <TitleBar @toggleTheme="toggleTheme" />
+    <TitleBar @toggleTheme="toggleTheme" @openAnnouncement="showAnnouncement = true" />
 
     <div class="flex flex-1 overflow-hidden">
       <!-- 左边栏：控制与状态 -->
@@ -242,6 +252,50 @@ onMounted(() => {
         <!-- 底部控制台日志 -->
         <ConsoleLog :logs="logs" @clear="clearLogs" />
       </main>
+    </div>
+
+    <!-- 公告弹窗 -->
+    <div v-if="showAnnouncement" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
+      <div class="bg-macBg border border-macBorder rounded-2xl w-full max-w-[360px] overflow-hidden shadow-2xl flex flex-col animate-in zoom-in-95 duration-200">
+        <!-- 弹窗头部 -->
+        <div class="px-5 py-4 border-b border-macBorder flex justify-between items-center bg-macSidebar">
+          <span class="text-xs font-semibold text-macTextPrimary flex items-center gap-1.5">
+            📢 官方公告
+          </span>
+          <button @click="showAnnouncement = false" class="text-macTextSecondary hover:text-macTextPrimary bg-transparent border-none cursor-pointer text-sm font-bold">
+            ✕
+          </button>
+        </div>
+        
+        <!-- 弹窗内容 -->
+        <div class="p-5 flex flex-col items-center gap-4 text-center overflow-y-auto max-h-[80vh]">
+          <!-- 祝福语 -->
+          <div class="text-[11px] text-macTextSecondary leading-relaxed bg-macSidebar border border-macBorder rounded-xl p-3.5 w-full">
+            <p class="font-semibold text-macTextPrimary mb-1 text-left">亲爱的同学们：</p>
+            <p class="text-left text-[10.5px]">祝大家在武汉工程大学的求学道路上一帆风顺，学业有成！希望本助手能帮助大家轻松高效地完成课程与学习任务，顺利毕业，步步高升！✨</p>
+          </div>
+
+          <!-- 公告正文 -->
+          <p class="text-xs text-macTextPrimary font-medium leading-relaxed">
+            欢迎大家扫描下方二维码，加入<br/>
+            <span class="text-macBlue font-semibold">【武汉工程大学成考交流群】</span>
+          </p>
+          
+          <!-- 二维码图片 -->
+          <div class="border border-macBorder rounded-xl p-1.5 bg-white shadow-sm max-w-[200px]">
+            <img :src="groupImg" alt="交流群二维码" class="w-full h-auto rounded-lg select-none pointer-events-none" />
+          </div>
+
+          <p class="text-[10px] text-macTextSecondary font-mono">QQ群号: 1042443770</p>
+        </div>
+        
+        <!-- 弹窗底部 -->
+        <div class="px-5 py-3.5 border-t border-macBorder bg-macSidebar flex justify-end">
+          <button @click="showAnnouncement = false" class="px-4 py-1.5 text-xs bg-macBlue text-white hover:bg-macBlue/90 border-none rounded-lg font-medium cursor-pointer shadow-sm transition-colors">
+            我知道了
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>

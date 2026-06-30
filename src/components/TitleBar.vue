@@ -1,5 +1,5 @@
 <script setup>
-defineEmits(['toggleTheme']);
+defineEmits(['toggleTheme', 'openAnnouncement']);
 
 const minimize = () => window.electronAPI.minimizeWindow();
 const maximize = () => window.electronAPI.maximizeWindow();
@@ -15,6 +15,11 @@ const close = () => window.electronAPI.closeWindow();
     
     <!-- 右侧控制区 (不拖拽) -->
     <div class="flex items-center h-full z-10" style="-webkit-app-region: no-drag;">
+      <!-- 公告按钮 -->
+      <button @click="$emit('openAnnouncement')" class="px-2.5 py-0.5 mr-2 text-[10px] bg-macInputBg border border-macBorder hover:bg-macBg text-macTextPrimary rounded transition-all duration-150 flex items-center gap-1 font-medium" title="官方公告">
+        📢 官方公告
+      </button>
+
       <!-- 主题切换按钮 -->
       <button @click="$emit('toggleTheme')" class="px-2.5 py-0.5 mr-2 text-[10px] bg-macInputBg border border-macBorder hover:bg-macBg text-macTextPrimary rounded transition-all duration-150 flex items-center gap-1 font-medium" title="切换主题">
         🌓 切换主题
